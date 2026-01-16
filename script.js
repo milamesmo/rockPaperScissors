@@ -28,19 +28,19 @@ let isAutoPlaying = false;
 let intervalId;
 
 function autoPlay() {
-  const autoBtn = document.querySelector('.auto-play-button');
+  const autoBtn = document.querySelector(".auto-play-button");
 
   if (!isAutoPlaying) {
     intervalId = setInterval(function () {
       const playerChoice = pickComputerMove();
       play(playerChoice);
-      autoBtn.innerHTML="Stop";
+      autoBtn.innerHTML = "Stop";
     }, 1000);
     isAutoPlaying = true;
   } else {
     clearInterval(intervalId);
     isAutoPlaying = false;
-    autoBtn.innerHTML="Auto Play";
+    autoBtn.innerHTML = "Auto Play";
   }
 }
 
