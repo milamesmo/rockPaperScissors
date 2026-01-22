@@ -44,6 +44,31 @@ function autoPlay() {
   }
 }
 
+document.querySelector('.btn__rock')
+.addEventListener('click', () => {
+  play('Rock');
+});
+
+document.querySelector('.btn__paper')
+.addEventListener('click', () => {
+  play('Paper');
+});
+
+document.querySelector('.btn__scissors')
+.addEventListener('click', () => {
+  play('Scissors');
+});
+
+document.body.addEventListener('keydown', (event) => {
+  if(event.key === 'r'){
+    play('Rock');
+  }else if(event.key === 'p'){
+    play('Paper');
+  }else if(event.key === 's'){
+    play('Scissors');
+  }
+});
+
 function play(playerChoice) {
   const computerChoice = pickComputerMove();
   let result = "";
