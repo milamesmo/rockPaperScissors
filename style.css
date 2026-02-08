@@ -14,6 +14,21 @@ body {
 
 }
 
+.reset__confirmation {
+    margin-top: 2rem;
+    width: 25rem;
+    display: flex;
+    position: absolute;
+    background-color: rgb(52, 52, 52);
+    text-align: center;
+    gap: .5rem;
+    padding: .5rem;
+}
+
+.hidden {
+    display: none;
+}
+
 .silkscreen-regular {
     font-family: "Silkscreen", sans-serif;
     font-weight: 400;

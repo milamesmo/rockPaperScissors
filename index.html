@@ -16,6 +16,12 @@
     <div class="section">
         <div class="container">
             <p class="silkscreen-bold">Rock Paper Scissors</p>
+            <div class="reset__confirmation hidden">
+            <p>Are you sure you want to reset the score?</p>
+            <button class="btn__confirm">YES</button>
+            <button class="btn__close">NO</button>
+            </div>
+        </div>
             <div class="move__btn">
                 <button class="btn__rock"><img src="images/ROCK.jpg" class="move-icon"></button>
                 <button class="btn__paper"><img src="images/PAPER.jpg"
@@ -29,12 +35,13 @@
                 </p>
             </div>
             <div class="action__btn">
-                <button class="btn__reset" onclick="reset()">Reset</button>
-                <button class="auto-play-button" onclick="
-                autoPlay();">Auto Play</button>
+                <button class="btn__reset">Reset</button>
+                <button class="auto-play-button">Auto Play</button>
             </div>
         </div>
+        
     </div>
+    
     <script src="script.js"></script>
 </body>
 

@@ -14,21 +14,45 @@ function upgradeScore(result) {
   }
 }
 
-function reset() {
-  (score.Wins = 0), (score.Losses = 0), (score.Ties = 0);
+const btnReset = document.querySelector(".btn__reset");
+
+const resetConfirmation = document.querySelector(".reset__confirmation");
+const btnResetConfirm = document.querySelector(".btn__confirm");
+const btnResetClose = document.querySelector(".btn__close");
+
+btnReset.addEventListener("click", () => reset());
+
+function reset(){
+  resetConfirmation.style.display = "block";
+}
+
+
+btnResetConfirm.addEventListener("click", () => {
+  ((score.Wins = 0), (score.Losses = 0), (score.Ties = 0));
 
   document.querySelector(".wins").innerHTML = `${score.Wins}`;
   document.querySelector(".ties").innerHTML = `${score.Ties}`;
   document.querySelector(".losses").innerHTML = `${score.Losses}`;
 
   document.querySelector(".showResult").innerHTML = ``;
-}
+
+  resetConfirmation.style.display = "none";
+});
+
+btnResetClose.addEventListener(
+  "click",
+  () => (resetConfirmation.style.display = "none"),
+);
+
 
 let isAutoPlaying = false;
 let intervalId;
 
-function autoPlay() {
-  const autoBtn = document.querySelector(".auto-play-button");
+const autoBtn = document.querySelector('.auto-play-button');
+
+autoBtn.addEventListener('click', ()=> autoPlay())
+
+function autoPlay () {
 
   if (!isAutoPlaying) {
     intervalId = setInterval(function () {
@@ -42,30 +66,31 @@ function autoPlay() {
     isAutoPlaying = false;
     autoBtn.innerHTML = "Auto Play";
   }
-}
+};
 
-document.querySelector('.btn__rock')
-.addEventListener('click', () => {
-  play('Rock');
+document.querySelector(".btn__rock").addEventListener("click", () => {
+  play("Rock");
 });
 
-document.querySelector('.btn__paper')
-.addEventListener('click', () => {
-  play('Paper');
+document.querySelector(".btn__paper").addEventListener("click", () => {
+  play("Paper");
 });
 
-document.querySelector('.btn__scissors')
-.addEventListener('click', () => {
-  play('Scissors');
+document.querySelector(".btn__scissors").addEventListener("click", () => {
+  play("Scissors");
 });
 
-document.body.addEventListener('keydown', (event) => {
-  if(event.key === 'r'){
-    play('Rock');
-  }else if(event.key === 'p'){
-    play('Paper');
-  }else if(event.key === 's'){
-    play('Scissors');
+document.body.addEventListener("keydown", (event) => {
+  if (event.key === "r") {
+    play("Rock");
+  } else if (event.key === "p") {
+    play("Paper");
+  } else if (event.key === "s") {
+    play("Scissors");
+  } else if (event.key === "a") {
+    autoPlay();
+  } else if (event.key === "Backspace") {
+    reset();
   }
 });
 
@@ -91,9 +116,8 @@ function play(playerChoice) {
   document.querySelector(".ties").innerHTML = `${score.Ties}`;
   document.querySelector(".losses").innerHTML = `${score.Losses}`;
 
-  document.querySelector(
-    ".showResult"
-  ).innerHTML = `You picked ${playerChoice}. Computer picked ${computerChoice}. ${result}`;
+  document.querySelector(".showResult").innerHTML =
+    `You picked ${playerChoice}. Computer picked ${computerChoice}. ${result}`;
 }
 
 function pickComputerMove() {
